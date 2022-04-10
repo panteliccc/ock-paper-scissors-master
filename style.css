@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+html { 
+    overflow: hidden;
+}
+/*Variable*/
+:root{
+    --Scissors: hsl(39, 89%, 49%);
+    --Paper: hsl(230, 89%, 62%);
+    --Rock: hsl(349, 71%, 52%);
+    --Dark_Text: hsl(229, 25%, 31%);
+    --Score_Text: hsl(229, 64%, 46%);
+    --Header_Outline: hsl(217, 16%, 45%);
+    --Radial_Gradient: hsl(214, 47%, 23%), hsl(237, 49%, 15%);
+    --Lizard : hsl(261, 73%, 60%);
+    --Cyan: hsl(189, 59%, 53%);
+    --p:rgb(2, 5, 41);
+}
+/*Body Style*/
+body{
+    background: radial-gradient(var(--Radial_Gradient));
+    font-family: 'Barlow Semi Condensed';
+}
+.header{
+    width:50%;
+    display: flex;
+    padding: 1.2%;
+    align-items: center;
+    justify-content: space-between;
+    border: 5px solid var(--Header_Outline);
+    border-radius: 15px;
+    margin:40px auto;
+}
+.poeni{
+    background-color: white;
+    width: 22%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 130px;
+    flex-direction: column;
+    border-radius: 15px;
+}
+.poeni h3{
+    color: var(--Score_Text);
+    font-weight: 400;
+    font-size: 150%;
+}
+.poeni h1{
+    color: var(--Dark_Text);
+    font-size: 400%;
+}
+.game{
+    background: url(./images/bg-triangle.svg);
+    width: 50%;
+    height: 40vh;
+    background-size:   contain   ;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 80px auto;
+    margin-bottom: 180px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.game img, .step2 img{
+    background: white;
+    width: 100px;
+    padding:10%;
+    height: 100px;
+    border-radius: 50%;
+    border: 20px solid var(--Rock);
+    box-shadow: 7px 7px rgba(0, 0, 0, 0.226) inset , 2px 10px hsla(349, 87%, 30%, 0.76);
+    cursor: pointer;
+}
+.game .row{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: auto;
+}
+.game .row:nth-child(1){
+    margin-top: 10px;
+    margin-bottom: 20px;
+    top: 100px;
+}
+.game .row:nth-child(2){
+    justify-content: center;
+}
+.game .rock,.step2 .rock{
+    border: 20px solid var(--Rock);
+    box-shadow: 7px 7px rgba(0, 0, 0, 0.226) inset , 2px 10px hsla(349, 87%, 30%, 0.76);
+}
+.game .paper,.step2 .paper{
+    box-shadow: 7px 7px rgba(0, 0, 0, 0.226) inset , 2px 10px rgba(36, 65, 214, 0.76);
+    border-color: var(--Paper);
+}
+.game .scissors,.step2 .scissors{
+    box-shadow: 7px 7px rgba(0, 0, 0, 0.226) inset , 2px 10px rgba(167, 111, 7, 0.76);
+    border-color: var(--Scissors);  
+}
+.rules  {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    color: white;
+    font-size: 120%;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    padding:10px 20px;
+    border-radius: 10px;
+    border: 2px solid var(--Header_Outline);
+    cursor: pointer;
+}
+.rules:hover{
+    background: white;
+    color:hsl(237, 49%, 15%) ;
+    transition: all .3s;
+}
+.modal{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top:0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    background: rgba(0, 0, 0, 0.454);
+    display: none;
+
+}
+.modal .modal-content{
+    background: white;
+    padding: 2% 3%;
+    border-radius: 10px;    animation: modal .3s linear;
+}
+.modal .modal-content .naslov{
+    display: flex;
+    justify-content: space-between;
+    align-items: center ;
+    margin-bottom: 20px;
+}
+.modal .modal-content .naslov img{
+    cursor: pointer;
+}
+.modal .modal-content .naslov h3{
+    color: hsl(214, 47%, 23%);
+    font-size: 200%;
+    text-transform: uppercase;
+}
+.step2 .sel{ 
+    display: flex ;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.step2 .sel h1 {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 200%;
+}
+.step2 .sel p {
+    color: hsl(237, 49%, 15%);
+    font-size: 120%;
+    text-transform: uppercase;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid white;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+.step2 .sel p:hover{
+    background-color: transparent;
+    color: white;
+    transition: all .3s;
+}
+.step2  {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 100px;
+}
+.step2 img {
+    padding: 30px;
+    width: 200px;
+    height: 200px;
+    border-width: 30px;
+    cursor: auto;
+}
+.step2 .mobile {
+    display: none;
+}
+
+@keyframes modal {
+    0%{
+        margin-top: 90%;
+    }
+    
+}
+@media screen and (max-width:1400px) {
+    .game{
+        width: 60%;
+    }
+    
+}
+@media screen and (max-width:1100px) {
+    .header{
+        width: 60%;
+    }
+    .poeni{
+        width: 30%;
+    }
+    .game{
+        width: 80%;
+        
+    }
+    .step2 {
+        justify-content: space-between  ;gap: 0;
+    }
+    .step2 img {
+        width: 170px;
+        height: 170px;
+    }
+    
+}
+@media screen and (max-width:800px) {
+    .header{
+        width: 80%;
+    }
+    .poeni{
+        width: 30%;
+    }
+    .game{
+        width: 80%;
+    }
+    .game .row{
+        width: 100%;
+    }
+    .modal .modal-content{
+        width: 92%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 0 4%;
+    }
+    .modal .modal-content img{
+        width: 80%;
+        margin: auto;
+    }
+    .modal .modal-content .naslov img{
+        width: 5%;
+        margin: 10% 0;
+    }
+    .step2 {
+        justify-content: center;
+        gap: 50px;
+    }
+    .step2 .sel {
+        flex-direction: column-reverse;
+    }
+    .step2 .sel h1 {
+        font-size: 100%;
+    }
+    .step2 img {
+        width: 100px;
+        height: 100px;
+        border-width: 20px;
+    }
+    .step2 .desktop {
+        display: none;
+    }
+    .step2 .mobile {
+        display: flex;
+        flex-direction:column;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 15%;
+
+    }
+    
+    .step2 .mobile h1 {
+        font-size: 300%;
+        letter-spacing: 5px;
+    }
+}
+@media screen and (max-width:600px) {
+    .header{
+        width: 90%;
+        margin: 10px auto;
+    }
+    .poeni{
+        width: 40%;
+    }
+    .game{
+        width: 90%;
+    }
+    .game img{
+        padding:7%;
+        width: 80px;
+        height: 80px;
+    }
+    .game .row{
+        margin-top: 50px;
+    }
+}
+@media screen and (max-width:455px)  {
+    .step2 {
+        gap:20px;
+    }
+    .step2 img {
+        width: 70px;
+        height: 70px;
+        border-width: 15px;
+    }
+    .step2 .sel h1 {
+        font-size: 100%;
+        letter-spacing: 2px;
+    }
+    .step2 .mobile h1 {
+        font-size: 220%;
+        letter-spacing: 5px;
+    }
+}
+@media screen and (max-width:379px)  {
+    .game {
+        width: 100%;
+    }
+}
